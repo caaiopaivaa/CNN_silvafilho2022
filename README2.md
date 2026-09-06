@@ -6,12 +6,12 @@ Pipeline de visão computacional e aprendizado profundo desenvolvido em **Tensor
 
 ## 📌 Visão Geral do Projeto
 
-O objetivo deste projeto é construir um classificador robusto para distinguir grafias manuscritas de alta variabilidade entre os caracteres alfabéticos **'V'** e **'F'**. O pipeline abrange desde o download e saneamento dos dados brutos até a correção de orientação geométrica, reamostragem tridimensional de canais e treinamento supervisionado com parada antecipada (*Early Stopping*).
+O objetivo deste projeto é construir um classificador de alta precisão para distinguir grafias manuscritas de alta variabilidade entre os caracteres alfabéticos **'V'** e **'F'**. O pipeline abrange desde a extração e saneamento dos dados brutos até a correção de orientação geométrica, reamostragem tridimensional de canais e treinamento supervisionado com parada antecipada (*Early Stopping*).
 
 ### Destaques dos Resultados
-* **Acurácia no Teste Independente:** **97,18%**
-* **Função de Perda no Teste (Loss):** **0,1089**
-* **Convergência:** Parada antecipada acionada na **Época 10**, restaurando os melhores pesos obtidos na **Época 6**.
+* **Acurácia no Teste Independente:** **99,52%**
+* **Função de Perda no Teste (Loss):** **0,0141**
+* **Generalização:** Quase nula taxa de confusão residual entre traços oblíquos/angulares (`V`) e perpendiculares/ortogonais (`F`).
 
 ---
 
@@ -38,7 +38,7 @@ A base filtrada foi particionada preservando a proporção exata das classes em 
 
 ## 🧠 Arquitetura da Rede Neural (CNN)
 
-A topologia foi desenhada com extração hierárquica profunda sem gargalos intermediários prematuros:
+A topologia foi desenhada com extração hierárquica progressiva em 3 estágios convolucionais seguidos de subamostragem:
 
 ```text
 Entrada: Tensor (32, 32, 3)
